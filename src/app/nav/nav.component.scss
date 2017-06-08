@@ -1,0 +1,49 @@
+.navbar,
+.jumbotron {
+    margin-bottom: 0;
+}
+
+.jumbotron {
+    background: url("../../assets/car-wallpaper.png") no-repeat center center;
+    width: 100%;
+    background-size: 100% 100%;
+    border-radius: 0;
+    color: #FFF;
+    height: 350px;
+    position: relative;
+}
+
+.navbar-inverse {
+    padding: 0 1em;
+    background: rgba(34, 34, 34, 0.72);
+}
+
+.navbar-brand {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.navbar-brand img {
+    display: block;
+    width: auto;
+    height: 100%;
+}
+
+.navbar-inverse .navbar-nav>li.active>a {
+    color: #ffffff;
+    background-color: rgba(73, 70, 70, 0.71);
+    border: 1px solid black;
+}
+
+.navbar-inverse .navbar-nav>li>a:hover {
+    font-weight: bold;
+}
+
+.navbar-inverse .navbar-nav>li.active>a:hover {
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.navbar-default .navbar-brand {
+    padding-left: 50px;
+}

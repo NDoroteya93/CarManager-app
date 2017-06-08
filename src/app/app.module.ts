@@ -8,19 +8,23 @@ import { CarFormComponent } from './car-form/car-form.component';
 
 // Services
 import { CarDataService } from './core/service/car-data.service';
+import { LocalStorageService } from './core/service/local-storage.service';
+import { NavComponent } from './nav/nav.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CarsListComponent,
-    CarFormComponent
+    CarFormComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule
   ],
   providers: [
-    CarDataService
+    CarDataService,
+    LocalStorageService
   ],
   bootstrap: [AppComponent]
 })

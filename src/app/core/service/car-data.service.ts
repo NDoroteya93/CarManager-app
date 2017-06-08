@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Car } from '../../car';
+// import { LocalStorageService } from './car-data.service';
 
 @Injectable()
 export class CarDataService {
@@ -10,7 +11,9 @@ export class CarDataService {
   // Placeholder for car's
   cars: Car[] = [];
 
-  constructor() { }
+  constructor(
+    // private storageService: LocalStorageService
+  ) { }
 
   // Аdd/Create
   addCar(car: Car) {
