@@ -1,0 +1,18 @@
+#form_box {
+    position: absolute;
+    top: 257px;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#form_box .panel.panel-default {
+    box-shadow: 0 0 30px black;
+}
+
+textarea,
+.dropdown .btn,
+.dropdown .dropdown-menu {
+    width: 100%;
+}
