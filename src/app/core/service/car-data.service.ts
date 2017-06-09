@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Car } from '../../car';
-// import { LocalStorageService } from './car-data.service';
+import { IdGenerator } from '../id-generator';
 
 @Injectable()
 export class CarDataService {
@@ -12,18 +12,33 @@ export class CarDataService {
   cars: Car[] = [];
 
   constructor(
-    // private storageService: LocalStorageService
   ) { }
 
   // Аdd/Create
   addCar(car: Car) {
+    // increment id
     if (!car.id) {
-      car.id = ++this.lastId;
+      car.id = new IdGenerator().generate();
     }
 
-    this.cars.push(car);
+    // Save to localStorage
+    let localData: any = localStorage.getItem('cars');
+    if (localData) {
+      localData = JSON.parse(localData);
+    } else {
+      localData = {};
+      localData[car.id] = {};
+    }
+
+    localData[car.id] = car;
+    localStorage.setItem('cars', JSON.stringify(localData));
 
     return this;
+  }
+
+  getAllCars() {
+    let data = JSON.parse(localStorage.getItem('cars'));
+    return data;
   }
 
   // Update/ Edit

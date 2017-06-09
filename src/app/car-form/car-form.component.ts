@@ -1,9 +1,14 @@
 
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+
 import { Car } from '../car';
 import { Type } from './types';
 import { Transmission } from './transmission';
+
+import { CarDataService } from '../core/service/car-data.service';
+
 @Component({
   selector: 'app-car-form',
   templateUrl: './car-form.component.html',
@@ -14,7 +19,12 @@ export class CarFormComponent {
 
   complexForm: FormGroup;
 
-  constructor(fb: FormBuilder) {
+  constructor(
+    fb: FormBuilder,
+    private carService: CarDataService,
+    private route: ActivatedRoute,
+    private router: Router,
+  ) {
     let car = new Car({
       'brand': [null, Validators.required],
       'model': [null, Validators.required],
@@ -49,7 +59,9 @@ export class CarFormComponent {
 
 
   submitForm(value: any): void {
-    console.log('Reactive Form Data');
+
+    this.carService.addCar(value);
+    this.router.navigate([''])
     console.log(value);
   }
 }

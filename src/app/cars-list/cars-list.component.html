@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="row">
+        <div class="container">
+            <div class="row" *ngIf='carDetails?.length > 0'>
+                <div class="col-lg-12">
+                    <div>
+                        <div class="col-md-4" *ngFor='let car of carDetails; let i= index'>
+                            <div class="car-container text-center">
+                                <div class="car-info">
+                                    <div class="car-model">
+                                        <h3 class="hvr-underline-from-center"> {{car.model}}</h3>
+                                    </div>
+
+                                    <div class="car-content">
+                                        <p>Brand: <span>{{car.brand}}</span></p>
+                                        <p>Description: <span>{{car.description}}</span></p>
+                                        <p>Registration Number:
+                                            <span>{{car.registration_number}}</span>
+                                        </p>
+                                        <p>Type:
+                                            <span>{{car.fuelType}}</span>
+                                        </p>
+                                        <p>Transmission:
+                                            <span>{{car.transmission}}</span>
+                                        </p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

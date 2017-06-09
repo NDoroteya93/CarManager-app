@@ -34,7 +34,7 @@
                 </div>
 
                 <div class="form-group required" [ngClass]="{'has-error': !complexForm.controls['fuelType'].valid && complexForm.controls['fuelType'].touched}">
-                    <label for="description_car" class="control-label col-md-4 requiredField">Type</label>
+                    <label for="description_car" class="control-label col-md-4 requiredField">Type<span class="asteriskField">*</span></label>
                     <div class="controls col-md-8">
                         <select required class="form-control" id="type_select" formControlName="fuelType" [(ngModel)]="selectedType.name">
                             <option selected></option>
@@ -44,7 +44,7 @@
                 </div>
 
                 <div class="form-group required" [ngClass]="{'has-error': !complexForm.controls['transmission'].valid && complexForm.controls['transmission'].touched}">
-                    <label for="description_car" class="control-label col-md-4 requiredField">Transmission</label>
+                    <label for="description_car" class="control-label col-md-4 requiredField">Transmission<span class="asteriskField">*</span></label>
                     <div class="controls col-md-8">
                         <select class="form-control" id="transmission_select" formControlName="transmission" [(ngModel)]="selectedTransmission.name">
                             <option selected></option>
