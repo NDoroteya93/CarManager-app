@@ -10,9 +10,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CarsListComponent } from './cars-list/cars-list.component';
 import { CarFormComponent } from './car-form/car-form.component';
-import {SimpleFormComponent} from './car-form/car.simpleform';
-import {ComplexFormComponent } from './car-form/car.complexform';
-import {FormValidationComponent} from './car-form/car.formvalidation';
 
 // Services
 import { CarDataService } from './core/service/car-data.service';
@@ -24,16 +21,13 @@ import { NavComponent } from './nav/nav.component';
     AppComponent,
     CarsListComponent,
     CarFormComponent,
-    NavComponent, 
-    SimpleFormComponent, 
-    ComplexFormComponent, 
-    FormValidationComponent
+    NavComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule, 
-    FormsModule, 
-    ReactiveFormsModule, 
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
     HttpModule
   ],
   providers: [

@@ -1,17 +1,65 @@
-<div class="container">
-    <div class="row">
-        <div class="col-sm-6 col-sm-offset-3">
-            <simple-form></simple-form>
+<div id="form_box" class="form_box mainbox col-md-4 col-md-offset-2 col-sm-8 col-sm-offset-2">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="panel-title">New Car</div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-6 col-sm-offset-3">
-            <complex-form></complex-form>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-6 col-sm-offset-3">
-            <form-validation></form-validation>
+        <div class="panel-body">
+            <form [formGroup]="complexForm" (ngSubmit)="submitForm(complexForm.value)" class="form-horizontal">
+                <div class="form-group required" [ngClass]="{'has-error': !complexForm.controls['brand'].valid && complexForm.controls['brand'].touched}">
+                    <label for="" class="control-label col-md-4 requiredField"> Brand<span class="asteriskField">*</span> </label>
+                    <div class="controls col-md-8">
+                        <input class="input-md textinput textInput form-control" id="brand_car" name="brand" placeholder="Choose your brand" type="text" [formControl]="complexForm.controls['brand']" />
+                        <div *ngIf="complexForm.controls['brand'].hasError('required') && complexForm.controls['brand'].touched" class="alert alert-danger">You must include a Brand.</div>
+                    </div>
+                </div>
+                <div class="form-group required" [ngClass]="{'has-error': !complexForm.controls['model'].valid && complexForm.controls['model'].touched}">
+                    <label for=" model_car" class="control-label col-md-4 requiredField"> Model<span class="asteriskField">*</span> </label>
+                    <div class="controls col-md-8">
+                        <input class="input-md emailinput form-control" id="model_car" name="model" placeholder="Choose your model" type="text" [formControl]="complexForm.controls['model']" />
+                        <div *ngIf="complexForm.controls['model'].hasError('required') && complexForm.controls['model'].touched" class="alert alert-danger">You must include a model.</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="description_car" class="control-label col-md-4 requiredField">Description</label>
+                    <div class="controls col-md-8">
+                        <textarea name="description" id="description_car" rows="3" [formControl]="complexForm.controls['description']"></textarea>
+                    </div>
+                </div>
+                <div class="form-group required" [ngClass]="{'has-error': !complexForm.controls['registration_number'].valid && complexForm.controls['registration_number'].touched}">
+                    <label for="number_car" class="control-label col-md-4 requiredField"> Number<span class="asteriskField">*</span> </label>
+                    <div class="controls col-md-8">
+                        <input class="input-md textinput textInput form-control" id="number_car" name="number" placeholder="Choose your number" type="text" [formControl]="complexForm.controls['registration_number']" />
+                        <div *ngIf="complexForm.controls['registration_number'].hasError('required') && complexForm.controls['registration_number'].touched" class="alert alert-danger">You must include a Registration number.</div>
+                    </div>
+                </div>
+
+                <div class="form-group required" [ngClass]="{'has-error': !complexForm.controls['fuelType'].valid && complexForm.controls['fuelType'].touched}">
+                    <label for="description_car" class="control-label col-md-4 requiredField">Type</label>
+                    <div class="controls col-md-8">
+                        <select required class="form-control" id="type_select" formControlName="fuelType" [(ngModel)]="selectedType.name">
+                            <option selected></option>
+                            <option *ngFor="let type of types" [ngValue]="type.id" >{{type.name}}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group required" [ngClass]="{'has-error': !complexForm.controls['transmission'].valid && complexForm.controls['transmission'].touched}">
+                    <label for="description_car" class="control-label col-md-4 requiredField">Transmission</label>
+                    <div class="controls col-md-8">
+                        <select class="form-control" id="transmission_select" formControlName="transmission" [(ngModel)]="selectedTransmission.name">
+                            <option selected></option>
+                            <option *ngFor="let transmission of transmissions" [ngValue]="transmission.id">{{transmission.name}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="aab controls col-md-4"></div>
+                    <div class="controls col-md-8">
+                        <input type="submit" name="Save" value="Save" class="btn btn-success col-xs-12" [disabled]="!complexForm.valid" />
+                    </div>
+                </div>
+
+            </form>
         </div>
     </div>
 </div>
