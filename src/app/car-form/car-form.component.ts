@@ -4,8 +4,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import { Car } from '../car';
-import { Type } from './types';
-import { Transmission } from './transmission';
+import { Type } from '../types';
+import { Transmission } from '../transmission';
 
 import { CarDataService } from '../core/service/car-data.service';
 
@@ -57,11 +57,8 @@ export class CarFormComponent {
     this.complexForm.controls['transmission'].setValue(this.transmissions[1], { onlySelf: true });
   }
 
-
   submitForm(value: any): void {
-
     this.carService.addCar(value);
     this.router.navigate([''])
-    console.log(value);
   }
 }

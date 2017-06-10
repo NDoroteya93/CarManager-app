@@ -26,11 +26,11 @@ export class CarDataService {
     if (localData) {
       localData = JSON.parse(localData);
     } else {
-      localData = {};
+      localData = [];
       localData[car.id] = {};
     }
 
-    localData[car.id] = car;
+    localData.push(car);
     localStorage.setItem('cars', JSON.stringify(localData));
 
     return this;
@@ -43,16 +43,41 @@ export class CarDataService {
 
   // Update/ Edit
   updateCar(id: number, value: Object = {}) {
+    let localData: any = localStorage.getItem('cars');
 
+    if(localData){ 
+      localData = JSON.parse(localData);
+    }
+
+    localData.forEach((car)=> {
+      if(car.id === id){ 
+        Object.assign(car, value);
+      }
+    }); 
+    
+    localStorage.setItem('cars', JSON.stringify(localData));
   }
 
   // Delete 
   deleteCar(id: number) {
-    let car: number;
+     let localData: any = localStorage.getItem('cars');
+    if(localData){ 
+      localData = JSON.parse(localData);
+    }
 
-    this.cars = this.cars.filter((car) => car.id !== id);
-
+    localData = localData.filter((car) => car.id !== id);
+    
+    localStorage.setItem('cars', JSON.stringify(localData));
     return this;
+  }
 
+  getCarById(id:number){ 
+    let localData: any = localStorage.getItem('cars');
+
+    if(localData){ 
+      localData = JSON.parse(localData);
+    }
+    return localData
+      .filter(car => car.id === id);
   }
 }
