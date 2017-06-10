@@ -1,5 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {PaginationDirective} from 'angular2-bootstrap-pagination/directives/pagination.directive';
+import { AlertModule } from 'ngx-bootstrap';
+import { PaginationModule } from 'ngx-bootstrap';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -20,14 +23,17 @@ import { NavComponent } from './nav/nav.component';
     AppComponent,
     CarsListComponent,
     CarFormComponent,
-    NavComponent
+    NavComponent, 
+    PaginationDirective
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpModule
+    HttpModule, 
+    AlertModule.forRoot(), 
+    PaginationModule.forRoot()
   ],
   providers: [
     CarDataService

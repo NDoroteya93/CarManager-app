@@ -14,6 +14,10 @@ import { CarDataService } from '../core/service/car-data.service';
 })
 export class CarsListComponent implements OnInit {
   carDetails;
+    private data:Object[] = [];
+    page:number = 1;
+    itemsPerPage:number = 10;
+    maxSize:number = 5;
 
   constructor(
     private carService: CarDataService,
@@ -43,7 +47,9 @@ export class CarsListComponent implements OnInit {
 
 
   getCarDetails() { 
-    return this.carDetails = this.carService.getAllCars();
+     this.carDetails = this.carService.getAllCars();
+     this.data = this.carDetails;
+     this.onPageChange({page: this.page, itemsPerPage: this.itemsPerPage})
   }
 
   deleteCar(id: number, index: number) {
@@ -54,5 +60,11 @@ export class CarsListComponent implements OnInit {
   updateCar(id: number, car: Object = {}){ 
     
     this.carService.updateCar(id, car);
+  }
+
+  onPageChange(page:any) {
+     let start = (page.page - 1) * page.itemsPerPage;
+      let end = page.itemsPerPage > -1 ? (start + page.itemsPerPage) : this.data.length;
+      this.carDetails = this.data.slice(start, end);
   }
 }

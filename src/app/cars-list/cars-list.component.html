@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row" *ngIf='carDetails?.length > 0'>
-        <article class="col-md-3 well" *ngFor='let car of carDetails; let i= index'>
+        <article class="col-md-3 well col-md-offset-1" *ngFor='let car of carDetails; let i= index'>
             <h3 class="text-left">{{car.brand}}<br />
                 <small>{{car.model}}</small>
             </h3>
@@ -100,4 +100,9 @@
         </article>
 
     </div>
+</div>
+
+<div class="text-center">
+    <pagination class="pagination-sm" [(ngModel)]="page" [totalItems]="data.length" [itemsPerPage]="itemsPerPage" [maxSize]="maxSize" [boundaryLinks]="true" (pageChanged)="onPageChange($event)">
+    </pagination>
 </div>
